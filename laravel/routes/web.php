@@ -10,7 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Building;
+use App\Neighborhood;
+
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
+});
+
+Route::get('/api/neighborhood/list', function () {
+    return Neighborhood::all();
+});
+
+Route::get('/api/building/search/neighborhood/{id}', function ($id) {
+    return Building::query()->where(Building::NEIGHBORHOOD_ID, '=', $id)->get();
 });
