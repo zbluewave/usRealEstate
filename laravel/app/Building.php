@@ -20,6 +20,6 @@ class Building extends Model
 
     public function neighborhood()
     {
-        return $this->hasOne(Neighborhood::class);
+        return $this->belongsTo(Neighborhood::class, self::NEIGHBORHOOD_ID);
     }
 }

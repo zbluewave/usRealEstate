@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('main');
 });
 
+Route::get('/list', function () {
+    return view('list');
+});
+
 Route::get('/api/neighborhood/list', function () {
     return Neighborhood::all();
 });
