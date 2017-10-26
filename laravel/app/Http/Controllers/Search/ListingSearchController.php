@@ -21,12 +21,21 @@ class ListingSearchController extends BaseController
         $priceMin = intval(Input::get('price_min', 0));
         $priceMax = intval(Input::get('price_max', 40000000));
 
-        return Building::query()
+        $listings = Building::query()
             ->whereIn(Building::NEIGHBORHOOD_ID, $neighborhoodIds)
             ->whereIn(Building::TYPE, $buildingTypes)
             ->whereBetween(Building::BEDROOMS_NUM, [$bedroomMin, $bedroomMax])
             ->whereBetween(Building::BATH_NUM, [$bathRoomMin, $bathRoomMax])
             ->whereBetween(Building::PRICE, [$priceMin, $priceMax])
             ->get();
+
+        //return $listings;
+
+        return view(
+            'list',
+            [
+                'listings' => $listings
+            ]
+        );
     }
 }

@@ -230,51 +230,56 @@
                     <h3 class="title is-4" id="listing-search-result">Search Result: 357 apartments by owner</h3>
                 </div>
 
-                <div class="box">
-                    <div class="columns">
-                        <div class="column is-5">
-                            <img src="https://photos.zillowstatic.com/p_h/ISqd35dopprchq0000000000.jpg" alt="">
-                        </div>
-                        <div class="column">
-                            <div class="level">
+                @foreach ($listings as $listing)
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column is-5">
+                                <img src="https://photos.zillowstatic.com/p_h/ISqd35dopprchq0000000000.jpg" alt="">
+                            </div>
+                            <div class="column">
+                                <div class="level">
 
 
-                                <h4 class="title is-5 main-color">56 East 32nd Street #1</h4>
-                                <a href="#" class="button is-info is-outlined" id="search-toline"><span class="icon">
+                                    <h4 class="title is-5 main-color">{{$listing->address}}</h4>
+                                    <a href="#" class="button is-info is-outlined" id="search-toline"><span class="icon">
           <i class="fa fa-folder-open-o"></i>
         </span> <span class="">Save seach</span></a>
-                            </div>
-                            <div class="content">
-                                <p class="">
-                                    <span id="price-toline" class="title is-5">$935,353</span>
-                                    <a href="#" class=""  id="calculate-mortage"><span class="icon">
+                                </div>
+                                <div class="content">
+                                    <p class="">
+                                        <span id="price-toline" class="title is-5">${{$listing->price}}</span>
+                                        <a href="#" class=""  id="calculate-mortage"><span class="icon">
       </span> <i class="fa fa-calculator"></i> <span>Calculate mortage </span>
 
-                                    </a>
-                                    <a href="#" class=" is-info is-outlined" id="location-toline"><span class="icon">
+                                        </a>
+                                        <a href="#" class=" is-info is-outlined" id="location-toline"><span class="icon">
 <i class="fa fa-map-marker"></i>
 </span> <span id="map-icon-listing">Show on map</span></a>
-                                </p>
-                                <p id="listing-ads" class="">
-                                <ul class="level is-mobile" id="listing-ad-ul-type">
-                                    <li id="listing-ad-bed">3 beds</li>
-                                    <li id="listing-ad-bath">1.5 baths</li>
-                                    <li id="listing-ad-ft">1,571 ft²</li>
-                                </ul>
-                                </p>
-                                <div class="listing-ad-type">
-                                    <span id="listing-ad-co-op">Co - Op in Stuyvesant Heights</span>
+                                    </p>
+                                    <p id="listing-ads" class="">
+                                    <ul class="level is-mobile" id="listing-ad-ul-type">
+                                        <li id="listing-ad-bed">{{$listing->bedrooms_number}} beds</li>
+                                        <li id="listing-ad-bath">{{$listing->bathrooms_number}} baths</li>
+                                        <li id="listing-ad-ft">1,571 ft²</li>
+                                    </ul>
+                                    </p>
+                                    <div class="listing-ad-type">
+                                        <span id="listing-ad-co-op">{{$listing->type}} in Stuyvesant Heights</span>
+                                    </div>
+                                    <div class="listing-ad-open-house">
+                                        <span>Open House: 7:30 am 8/29</span>
+                                    </div>
+
                                 </div>
-                                <div class="listing-ad-open-house">
-                                    <span>Open House: 7:30 am 8/29</span>
-                                </div>
+
 
                             </div>
-
-
                         </div>
                     </div>
-                </div>
+                @endforeach
+
+
+
 
 
                 <div class="box">
