@@ -18,6 +18,14 @@ class Building extends Model
     const YEAR_BUILT = 'year_built';
     const TYPE = 'type';
 
+    const UNIT_NUM = 'unit_number';
+    const BEDROOMS_NUM = 'bedrooms_number';
+    const BATH_NUM = 'bathrooms_number';
+    const PRICE = 'price';
+    const DATE = 'date';
+    const DESCRIPTION = 'description';
+
+
     public function neighborhood()
     {
         return $this->belongsTo(Neighborhood::class, self::NEIGHBORHOOD_ID);

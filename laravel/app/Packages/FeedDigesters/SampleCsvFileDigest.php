@@ -6,6 +6,7 @@ use App\City;
 use App\Neighborhood;
 use App\State;
 use App\Building;
+use Carbon\Carbon;
 
 class SampleCsvFileDigest
 {
@@ -56,12 +57,18 @@ class SampleCsvFileDigest
                 $row[$this->columnsMap[self::STORIES]],
                 $row[$this->columnsMap[self::UNITS]],
                 $row[$this->columnsMap[self::YEAR_BUILT]],
-                $row[$this->columnsMap[self::BUILDING_TYPE]]
+                $row[$this->columnsMap[self::BUILDING_TYPE]],
+                $row[$this->columnsMap[self::UNIT]],
+                $row[$this->columnsMap[self::PRICE]],
+                $row[$this->columnsMap[self::BEDS]],
+                $row[$this->columnsMap[self::BATHS]],
+                $row[$this->columnsMap[self::DATE]],
+                $row[$this->columnsMap[self::UNIT_DESCRIPTION]]
             );
         });
     }
 
-    private function getBuildingId($name, $address, $neighborhoodId, $zip, $stories, $units, $yearBuilt, $type)
+    private function getBuildingId($name, $address, $neighborhoodId, $zip, $stories, $units, $yearBuilt, $type, $unitNum, $price, $bedroomsNum, $bathroomsNum, $date, $desc)
     {
         $name = ucwords($name);
         $address = ucwords($address);
@@ -74,6 +81,7 @@ class SampleCsvFileDigest
         $buildingModel = Building::query()->where(Building::NAME, '=', $name)
             ->where(Building::ADDRESS, '=', $address)
             ->where(Building::NEIGHBORHOOD_ID, '=', $neighborhoodId)
+            ->where(Building::UNIT_NUM, '=', $unitNum)
             ->first();
         if (!$buildingModel) {
             $buildingModel = new Building();
@@ -85,6 +93,12 @@ class SampleCsvFileDigest
             $buildingModel->{Building::STORIES} = $stories;
             $buildingModel->{Building::YEAR_BUILT} = $yearBuilt;
             $buildingModel->{Building::TYPE} = $type;
+            $buildingModel->{Building::UNIT_NUM} = $unitNum;
+            $buildingModel->{Building::PRICE} = floatval($price);
+            $buildingModel->{Building::BEDROOMS_NUM} = intval($bedroomsNum);
+            $buildingModel->{Building::BATH_NUM} = intval($bathroomsNum);
+            $buildingModel->{Building::DATE} = Carbon::createFromFormat('m/d/Y', $date);
+            $buildingModel->{Building::DESCRIPTION} = $desc;
             $buildingModel->save();
         }
         return $buildingModel->{Building::ID};

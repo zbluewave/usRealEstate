@@ -8,6 +8,7 @@
 
 
 <body>
+<form action="/list" method="get">
 <section id="main_search">
     <div class="container">
         <div id="logo">
@@ -66,17 +67,17 @@
                         <h4 class="title is-5 ">SELECT LOCATION</h4></div>
                     <div class="columns">
                         <div class="column">
-                            <label class="checkbox" for=""><input type="checkbox" >West Chelsea</label>
-                            <label class="checkbox" for=""><input type="checkbox" >Inwood</label>
-                            <label class="checkbox" for=""><input type="checkbox" >Tribeca</label>
-                            <label class="checkbox" for=""><input type="checkbox" >Hudson Heights</label>
-                            <label class="checkbox" for=""><input type="checkbox" >Greenwich Village</label>
+                            <label class="checkbox" for=""><input type="checkbox" value="15" name="neighborhoods[]">West Chelsea</label>
+                            <label class="checkbox" for=""><input type="checkbox" value="7" name="neighborhoods[]">Turtle Bay</label>
+                            <label class="checkbox" for=""><input type="checkbox" value="2" name="neighborhoods[]">Central Park South</label>
+                            <label class="checkbox" for=""><input type="checkbox" value="16" name="neighborhoods[]">Battery Park City</label>
+                            <label class="checkbox" for=""><input type="checkbox" value="3" name="neighborhoods[]">Hell's Kitchen</label>
                         </div>
                         <div class="column">
-                            <label class="checkbox" for=""><input type="checkbox" >Fort George</label>
-                            <label class="checkbox" for=""><input type="checkbox">Midtown</label>
-                            <label class="checkbox" for=""><input type="checkbox">Washington Heights</label>
-                            <label class="checkbox" for=""><input type="checkbox" >Flatiron</label>
+                            <label class="checkbox" for=""><input type="checkbox" value="23" name="neighborhoods[]">Midtown South</label>
+                            <label class="checkbox" for=""><input type="checkbox" value="1" name="neighborhoods[]">Financial District</label>
+                            <label class="checkbox" for=""><input type="checkbox" value="21" name="neighborhoods[]">Upper Carnegie Hill</label>
+                            <label class="checkbox" for=""><input type="checkbox" value="8" name="neighborhoods[]">Tribeca</label>
                         </div>
                     </div>
                 </div>
@@ -85,12 +86,12 @@
                         <h4 class="title is-5 ">TYPE</h4></div>
                     <div class="columns is-gapless">
                         <div class="column">
-                            <label for=""><input type="checkbox" name="" id="">Condo</label><br />
-                            <label for=""><input type="checkbox" name="" id="">Co-Op</label>
+                            <label for=""><input type="checkbox" name="building_types[]" value="condo" id="">Condo</label><br />
+                            <label for=""><input type="checkbox" name="building_types[]" value="coop" id="">Co-Op</label>
                         </div>
                         <div class="column">
-                            <label for=""><input type="checkbox" name="" id="">Town house</label><br />
-                            <label for=""><input type="checkbox" name="" id="">Multi family</label>
+                            <label for=""><input type="checkbox" name="building_types[]" value="town_house" id="">Town house</label><br />
+                            <label for=""><input type="checkbox"name="building_types[]" value="muli_family" id="">Multi family</label>
                         </div>
                     </div>
 
@@ -99,7 +100,7 @@
                         <label class="label">Bed: </label>
 
                         <div class="select">
-                            <select name="" id="">
+                            <select name="bedrooms_min" id="">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -110,7 +111,7 @@
                             </select></div>
                         <label for="">to</label>
                         <div class="select">
-                            <select name="" id="">
+                            <select name="bedrooms_max" id="">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -125,7 +126,7 @@
 
                         <label class="label">Bath: </label>
                         <div class="select">
-                            <select name="" id="">
+                            <select name="bathrooms_min" id="">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -136,7 +137,7 @@
                             </select></div>
                         <label for="">to</label>
                         <div class="select">
-                            <select name="" id="">
+                            <select name="bathrooms_max" id="">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -149,9 +150,9 @@
                     <div class="fields content">
                         <label class="label" for="">Price:</label>
 
-                        <input placeholder="min" type="text" class="select is-primary">
+                        <input placeholder="min" type="text" name="price_min" class="select is-primary">
                         <label>to</label>
-                        <input placeholder="max" type="text" class="select is-primary">
+                        <input placeholder="max" type="text" name="price_max" class="select is-primary">
 
                     </div>
 
@@ -160,13 +161,14 @@
                             <button class="button" id="search_main">More Filters</button>
                         </div>
                         <div class="level-item has-text-centered ">
-                            <button class="button is-info" id="search_main">Search</button>
+                            <button type="submit" class="button is-info" id="search_main">Search</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 </section>
+</form>
 
 <section id="grid" class="margin_col">
     <div class="column is-7 is-offset-3 text-c">
