@@ -27,3 +27,7 @@ Route::get('/api/neighborhood/list', function () {
 Route::get('/api/building/search/neighborhood/{id}', function ($id) {
     return Building::query()->where(Building::NEIGHBORHOOD_ID, '=', $id)->get();
 });
+
+Route::get('/list-view', function () {
+    return view('list');
+});
