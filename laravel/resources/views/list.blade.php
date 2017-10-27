@@ -227,7 +227,7 @@
 
                 <div class="content">
 
-                    <h3 class="title is-4" id="listing-search-result">Search Result: 357 apartments by owner</h3>
+                    <h3 class="title is-4" id="listing-search-result">Search Result: {{count($listings)}} apartments by owner</h3>
                 </div>
 
                 @foreach ($listings as $listing)
